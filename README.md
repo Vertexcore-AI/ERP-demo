@@ -1,0 +1,90 @@
+# Fusion Starter
+
+A production-ready full-stack React application template with integrated Express server, featuring React Router 6 SPA mode, TypeScript, Vitest, Zod, and modern tooling.
+
+## Tech Stack
+
+- **Frontend**: React 18, React Router 6, TypeScript, Vite, TailwindCSS 3
+- **Backend**: Express server integrated with Vite dev server
+- **Testing**: Vitest
+- **UI**: Radix UI, TailwindCSS 3, Lucide React icons
+
+## Project Structure
+
+```
+client/                   # React SPA frontend
+├── pages/                # Route components (Index.tsx = home)
+├── components/ui/        # Pre-built UI component library
+├── App.tsx               # App entry point and SPA routing setup
+└── global.css            # TailwindCSS 3 theming and global styles
+
+server/                   # Express API backend
+├── index.ts              # Main server setup (express config + routes)
+└── routes/               # API handlers
+
+shared/                   # Types used by both client & server
+└── api.ts                # Example of how to share api interfaces
+```
+
+## Key Features
+
+- SPA routing with React Router 6
+- Type-safe API communication via shared interfaces
+- Pre-built, themeable UI component library
+- TailwindCSS 3 theming and design tokens
+- Hot reload for both client and server
+- Production-ready build and deployment (Netlify preconfigured)
+
+## Development Commands
+
+```bash
+npm run dev        # Start dev server (client + server)
+npm run build      # Production build
+npm run start      # Start production server
+npm run typecheck  # TypeScript validation
+npm test           # Run Vitest tests
+```
+
+## SPA Routing System
+
+- Route files are in [`client/pages/`](client/pages/)
+- Routes are defined in [`client/App.tsx`](client/App.tsx) using React Router 6
+- Example:
+  ```tsx
+  <Routes>
+    <Route path="/" element={<Index />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+  ```
+
+## Styling System
+
+- **Primary**: TailwindCSS 3 utility classes
+- **Theme and design tokens**: Configure in [`client/global.css`](client/global.css) and [`tailwind.config.ts`](tailwind.config.ts)
+- **UI components**: Pre-built library in [`client/components/ui/`](client/components/ui/)
+- **Utility**: `cn()` function combines `clsx` + `tailwind-merge` for conditional classes
+
+## Express Server Integration
+
+- Single port (8080) for both frontend/backend in development
+- Hot reload for both client and server code
+- API endpoints are prefixed with `/api/`
+- Example API route: [`server/routes/my-route.ts`](server/routes/my-route.ts)
+
+## Shared Types
+
+- Use [`shared/api.ts`](shared/api.ts) for types/interfaces shared between client and server
+- Path aliases: `@shared/*` for shared, `@/*` for client
+
+## Adding Features
+
+- **New Page Route**: Create a component in [`client/pages/`](client/pages/) and add a route in [`client/App.tsx`](client/App.tsx)
+- **New API Route**: Create a handler in [`server/routes/`](server/routes/), register it in [`server/index.ts`](server/index.ts), and use shared types from [`shared/api.ts`](shared/api.ts)
+- **Add new colors**: Edit [`client/global.css`](client/global.css) and [`tailwind.config.ts`](tailwind.config.ts)
+
+## Production Deployment
+
+- Standard: `npm run build` + `npm start`
+- Prefer Netlify for deployment (already preconfigured)
+
+##
